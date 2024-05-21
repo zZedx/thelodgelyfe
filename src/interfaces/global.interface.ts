@@ -1,10 +1,12 @@
 export interface ICabin {
-  id: string;
+  _id: string;
   name: string;
   maxCapacity: number;
-  regularPrice: number;
   discount: number;
+  description: string;
+  regularPrice: number;
   image: string;
+  imageName: string;
 }
 
 export interface IBooking {

@@ -1,5 +1,5 @@
 import CabinCard from "@/components/CabinCard";
-import { ICabin } from "@/interfaces/global.interface";
+import { getAllCabins } from "@/services/apiCabins";
 import React from "react";
 
 export const metadata = {
@@ -7,9 +7,8 @@ export const metadata = {
   description: "A list of cabins to book",
 };
 
-const Cabins: React.FC = () => {
-  const cabins: ICabin[] = [];
-
+const Cabins: React.FC = async () => {
+  const cabins = await getAllCabins();
   return (
     <div>
       <h1 className="text-4xl mb-5 text-accent-400 font-medium">Our Luxury Cabins</h1>
@@ -22,7 +21,7 @@ const Cabins: React.FC = () => {
       {cabins.length > 0 && (
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14">
           {cabins.map(cabin => (
-            <CabinCard cabin={cabin} key={cabin.id} />
+            <CabinCard cabin={cabin} key={cabin._id} />
           ))}
         </div>
       )}
